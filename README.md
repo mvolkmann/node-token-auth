@@ -13,7 +13,8 @@ and do that within the session timeout.
 
 This module provides five functions.
 
-The `configure` function must be called before any of the others.
+## `configure`
+This function must be called before any of the others.
 It takes the name of an encryption algorithm,
 a password to be used with it,
 and a session timeout in minutes.
@@ -27,7 +28,8 @@ for (const cipher of crypto.getCiphers()) {
 ````
 A recommended algorithm is "aes-256-ctr".
 
-The `generateToken` function takes a username, request object,
+## `generateToken`
+This function takes a username, request object,
 and response object.  It creates an encrypted token
 and returns it in the "Authorization" response header.
 It also uses setTimeout to delete the token from its cache
@@ -38,7 +40,8 @@ rather than deleting the token from its cache.
 This allows clients to proactively end a session rather than waiting
 for the user to initiate a request that causes a new token check.
 
-The `authorize` function takes a request and response object.
+## `authorize`
+This function takes a request and response object.
 It extracts a token from the "Authorization" request header
 and returns a boolean indicating whether the token matches
 one that was created earlier using the `generateToken` function.
@@ -48,13 +51,15 @@ and exit if it returns false as shown below:
   if (!auth.authorize(req, res)) return;
 ````
 
-The `deleteToken` function takes are request object and
+## `deleteToken`
+This function takes are request object and
 deletes the token found in its "Authorization" request header
 from the token cache.  This is useful when a user logs out
 before their session expires.
 It prevents future successful use of that token.
 
-The `deleteExpiredTokens` function can be called at any time
+## `deleteExpiredTokens`
+This function can be called at any time
 to purge expired tokens from the cache.  This typically is
 not necessary unless `global.socket` is set since otherwise
 tokens are automatically deleted when their session expires.
