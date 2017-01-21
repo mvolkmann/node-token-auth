@@ -1,0 +1,26 @@
+{
+  "name": "node-token-auth",
+  "version": "1.0.0",
+  "description": "A Node module that provides auth token generation and manaagment.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mvolkmann/node-token-auth.git"
+  },
+  "keywords": [
+    "Node",
+    "authentication",
+    "authorization",
+    "token",
+    "encryption"
+  ],
+  "author": "R. Mark Volkmann <r.mark.volkmann@gmail.com> (http://ociweb.com/mark)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mvolkmann/node-token-auth/issues"
+  },
+  "homepage": "https://github.com/mvolkmann/node-token-auth#readme"
+}
