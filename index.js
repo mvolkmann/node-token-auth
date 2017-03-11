@@ -70,6 +70,8 @@ function deleteExpiredTokens() {
 }
 
 function deleteToken(req) {
+  if (timeoutId) clearTimeout(timeoutId);
+
   const encryptedToken = req.get('Authorization');
   const token = decrypt(encryptedToken);
   const [username] = token.split('|');
