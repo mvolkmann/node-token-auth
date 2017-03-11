@@ -1,6 +1,6 @@
 {
   "name": "node-token-auth",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A Node module that provides auth token generation and manaagment.",
   "main": "index.js",
   "scripts": {
