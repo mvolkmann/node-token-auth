@@ -1,7 +1,7 @@
 const crypto = require('crypto');
 
 const tokenMap = {};
-let algorithm, password, sessionTimeout;
+let algorithm, password, sessionTimeout, timeoutId;
 
 function authorize(req, res) {
   // Check for existence of token.
@@ -83,6 +83,10 @@ function encrypt(text) {
 }
 
 function generateToken(username, req, res) {
+  // If another token was previously generated,
+  // cancel the timeout for its session.
+  if (timeoutId) clearTimeout(timeoutId);
+
   // Generate a token based username, client ip address, and expiration time.
   const expires = new Date();
   expires.setMinutes(expires.getMinutes() + sessionTimeout);
@@ -94,7 +98,7 @@ function generateToken(username, req, res) {
 
   res.setHeader('Authorization', encryptedToken);
 
-  setTimeout(
+  timeoutId = setTimeout(
     () => {
       if (global.socket) {
         global.socket.emit('session-timeout');
