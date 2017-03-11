@@ -20,12 +20,12 @@ a password to be used with it,
 and a session timeout in minutes.
 Encryption is provided by the builtin Node crypto module.
 Supported encryption algorithms can be seen by running the following code:
-````
+```js
 const crypto = require('crypto');
 for (const cipher of crypto.getCiphers()) {
-    console.log(cipher);
+  console.log(cipher);
 }
-````
+```
 A recommended algorithm is "aes-256-ctr".
 
 ## `generateToken`
@@ -47,9 +47,9 @@ and returns a boolean indicating whether the token matches
 one that was created earlier using the `generateToken` function.
 Any REST services that require authentication should call this
 and exit if it returns false as shown below:
-````
-  if (!auth.authorize(req, res)) return;
-````
+```js
+if (!auth.authorize(req, res)) return;
+```
 
 ## `deleteToken`
 This function takes are request object and
